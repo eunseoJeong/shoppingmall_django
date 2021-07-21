@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block title%}home{%endblock%}
+{%block content%}
+    <h2>안녕하세요</h2>
+    <form method="POST", action="{%url 'login'%}">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="아이디를 입력하세요."><br>
+        <input type="password" name="password" placeholder="비밀번호를 입력하세요.">
+        <button>로그인</button>
+        <p>{{error}}</p>
+    </form>
+{%endblock%}

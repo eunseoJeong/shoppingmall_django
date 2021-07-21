@@ -18,12 +18,22 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from user import views as A
+from product import views as B
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',A.home, name="home"),
+    path('',B.home, name="home"),
+    # user
     path('user/signup', A.user_signup, name="signup"),
     path('user/login', A.user_login, name="login"),
     path('user/logout', A.user_logout, name="logout"),
+    path('user/mypage', A.mypage, name="mypage"),
+
+    # product
+    path('product/<str:id>', B.detail, name="detail"),
+    path('product/post/', B.make_post, name="post"),
+    path('product/update/<str:id>', B.edit, name="edit"),
+    path('product/delete/<str:id>', B.delete, name="delete"),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

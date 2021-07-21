@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block title%}home{%endblock%}
+{%block content%}
+    <h2>안녕하세요</h2>
+<div class = "home_container">
+    <div class = "home_main">
+            {%for a in product%}
+            <div class = "home_body">
+                <p><a href="{%url 'detail' a.id%}"><img src="{{a.pdimage.url}}" class = "somenail" width = 200 height = 200 alt="안나와요" /></a></p>
+                <p><a href="{%url 'detail' a.id%}">{{a.pdname}}</a></p>
+                <a href="{%url 'detail' a.id%}">상품 상세보기</a>
+            </div>
+            {%endfor%}
+        </div>
+
+        <div id = 'home_nav'>
+            {%if product.has_previous%}
+                <a href = '?page={{product.previous_page_number}}'> < </a>
+            {%endif%}
+
+            <span>{{product.number}}</span>
+            <span>/</span>
+            <span>{{product.paginator.num_pages}}</span>
+
+            {%if product.has_next%}
+                <a href = '?page={{product.next_page_number}}'> > </a>
+            {%endif%}
+        </div>
+    </div>
+{%endblock%}

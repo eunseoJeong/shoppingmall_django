@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block title%}home{%endblock%}
+{%block content%}
+    <h3>[ 상품등록 ]</h3>
+    <form method="POST" action="{%url 'post'%}" enctype="multipart/form-data">
+        {%csrf_token%}
+        <p>상품이미지 ➡ <input type="file" name="pdimage"></p>
+        <p><input name="pdname" type="text" placeholder="상품명을 입력하세요. "></p>
+        <p><input name="pdprice" type="text" placeholder="상품가격을 입력하세요. "></p>
+        <p><textarea name="pdbody" cols="50" rows="30" placeholder="상품설명을 입력하세요. "></textarea></p>
+        <button>등록</button>
+    </form>
+{%endblock%}

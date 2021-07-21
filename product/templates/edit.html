@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block title%}edit{%endblock%}
+{%block content%}
+    <form method = "POST" action = "{% url 'edit' product.id %}" enctype="multipart/form-data">
+        {%csrf_token%}
+        <p>상품이미지를 수정하세요. <input type="file" name="pdimage" value="{{product.pdimage}}"></p>
+        <p><input type="text" name="pdname" value="{{product.pdname}}" placeholder="상품명을 수정하세요. "></p>
+        <p><input type="text" name="pdprice" value="{{product.pdprice}}" placeholder="상품가격을 수정하세요. "></p>
+        <p><textarea name="pdbody" value="{{product.pdimage}}" cols="50" rows="30" placeholder="상품설명을 수정하세요. "></textarea></p>
+        <button>수정</button>
+    </form>
+{%endblock%}

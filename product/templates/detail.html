@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block title%}detail{%endblock%}
+<!-- {%block link%}{%static 'css/base.css'%}{%endblock%} -->
+{%block content%}
+<div class = 'detail_container'>
+    <h3>{{product.pdname}}</h3>
+    <p>{{product.pdprice}}</p>
+    <img src="{{product.pdimage.url}}" class="detail_img" alt="안나와요" />
+    <p>{{product.pdbody}}</p>
+    <a href = "{%url 'edit' product.id%}">수정하기</a>
+    <a href = "{%url 'delete' product.id%}">삭제하기</a>
+</div>
+    {%endblock%}
